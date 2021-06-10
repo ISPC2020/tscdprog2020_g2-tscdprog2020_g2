@@ -125,22 +125,32 @@ class bankAccount:
         print("Interest rate: ", self.__interestRate)
 
 class employee:
-    # Constructor
-    def __init__(self):
 
-    # Methods
     def addEmployee(self):
-        """This method allows adding customer (Name; ID number; Phone; Email)"""
+        """This method allows adding employee to the database """
         # Input information
         ID_number = int(input("Enter ID number: "))
         birth_date = input("Enter the birth date (aaaa-mm-dd): ")
         firsts_name = input("Enter the firsts name: ")
         last_name = input("Enter the last name: ")
         gender = input("Enter a gender (M/F): ")
-        hire_date = input("Enter a hire date (aaaa-mm-dd): ")
+        hire_date = input("Enter a hire date (yyyy-mm-dd): ")
 
-        #Query to data base
+        # Query to database
 
+    def dropEmployee(self):
+        """This method allows dropping employee from the database"""
+        # Input information
+        ID_number = int(input("Enter ID number: "))
+
+        # Query to database
+
+    def showEmployee(self):
+        """This method allows show information from the database"""
+        # Input information
+        ID_number = int(input("Enter ID number: "))
+
+        # Query to database
 
 
 class bank:
