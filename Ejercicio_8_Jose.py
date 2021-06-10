@@ -1,3 +1,7 @@
+# Libraries
+import pymysql
+
+# Classes
 class clientPortfolio:
     # Constructor
     def __init__(self, lst):
@@ -119,6 +123,24 @@ class bankAccount:
         print("The interest earned: ", interest)
         print("Money available in ", self.__period_of_time, "days")
         print("Interest rate: ", self.__interestRate)
+
+class employee:
+    # Constructor
+    def __init__(self):
+
+    # Methods
+    def addEmployee(self):
+        """This method allows adding customer (Name; ID number; Phone; Email)"""
+        # Input information
+        ID_number = int(input("Enter ID number: "))
+        birth_date = input("Enter the birth date (aaaa-mm-dd): ")
+        firsts_name = input("Enter the firsts name: ")
+        last_name = input("Enter the last name: ")
+        gender = input("Enter a gender (M/F): ")
+        hire_date = input("Enter a hire date (aaaa-mm-dd): ")
+
+        #Query to data base
+
 
 
 class bank:
