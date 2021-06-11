@@ -175,7 +175,7 @@ class employee:
         if self.connectionTest():
             try:
                 with self.connection.cursor() as cursor:
-                    query = "DELETE FROM employees WHERE (emp_no) VALUES (%s)"
+                    query = "DELETE FROM employees WHERE (emp_no=) VALUES (%s)"
                     cursor.execute(query, ID_number)
                     self.connection.commit()
             finally:
@@ -220,7 +220,9 @@ class bank:
 
             2) Bank Accounts
 
-            3) Close""")
+            3) Employees
+            
+            4) Close""")
 
             option = int(input("\nEnter the option: "))
 
@@ -267,8 +269,33 @@ class bank:
                     # Go back to the previous loop
                     elif operateOption == 5:
                         break
-            # End of execution
+            # Employees
             elif option == 3:
+                print("Bucle empleado")
+                empleado = employee()
+
+                while True:
+                    print("""
+                    1) Add
+                    2) Drop
+                    3) Show information
+                    4) Back
+                    """)
+                    employee_option = int(input("Enter a option: "))
+
+                    if empleado.connectionTest():
+
+                        if employee_option == 1:
+                            empleado.addEmployee()
+                        elif employee_option == 2:
+                            empleado.dropEmployee()
+                        elif employee_option == 3:
+                            empleado.showEmployee()
+                        elif employee_option == 4:
+                            break
+
+            # End of execution
+            elif option == 4:
                 break
 
 
