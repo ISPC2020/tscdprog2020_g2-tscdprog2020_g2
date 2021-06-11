@@ -1,6 +1,7 @@
 # Libraries
 import pymysql
 
+
 # Classes
 class clientPortfolio:
     # Constructor
@@ -124,7 +125,23 @@ class bankAccount:
         print("Money available in ", self.__period_of_time, "days")
         print("Interest rate: ", self.__interestRate)
 
+
 class employee:
+
+    def __init__(self):
+        self.connection_test = False
+        self.connection = None
+
+    def connectionTest(self):
+        try:
+            self.connection = pymysql.connect(user='root', password='', host='localhost', db='employees')
+            print("Connection successful")
+            self.connection_test = True
+            return self.connection_test
+
+        except (pymysql.err.OperationalError, pymysql.err.InternalError) as error:
+            print("Connection error", error)
+            return self.connection_test
 
     def addEmployee(self):
         """This method allows adding employee to the database """
@@ -137,6 +154,17 @@ class employee:
         hire_date = input("Enter a hire date (yyyy-mm-dd): ")
 
         # Query to database
+        if self.connectionTest():
+            try:
+                with self.connection.cursor() as cursor:
+                    query = "INSERT INTO employees(emp_no, birth_date, first_name, last_name, gender, hire_date)" \
+                            " VALUES (%s, %s, %s, %s, %s, %s)"
+                    cursor.execute(query, (ID_number, birth_date, firsts_name, last_name, gender, hire_date))
+                    self.connection.commit()
+            finally:
+                self.connection.close()
+        else:
+            print("Try again")
 
     def dropEmployee(self):
         """This method allows dropping employee from the database"""
@@ -144,6 +172,16 @@ class employee:
         ID_number = int(input("Enter ID number: "))
 
         # Query to database
+        if self.connectionTest():
+            try:
+                with self.connection.cursor() as cursor:
+                    query = "DELETE FROM employees WHERE (emp_no) VALUES (%s)"
+                    cursor.execute(query, ID_number)
+                    self.connection.commit()
+            finally:
+                self.connection.close()
+        else:
+            print("Try again")
 
     def showEmployee(self):
         """This method allows show information from the database"""
@@ -151,6 +189,16 @@ class employee:
         ID_number = int(input("Enter ID number: "))
 
         # Query to database
+        if self.connectionTest():
+            try:
+                with self.connection.cursor() as cursor:
+                    query = "SELECT emp_no, salary, from_date FROM salaries WHERE emp_no VALUES (%s)"
+                    cursor.execute(query, ID_number)
+                    self.connection.commit()
+            finally:
+                self.connection.close()
+        else:
+            print("Try again")
 
 
 class bank:
