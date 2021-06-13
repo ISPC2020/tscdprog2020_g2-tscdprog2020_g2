@@ -2,7 +2,7 @@
 """
 Created on Mon Jun  7 17:51:23 2021
 
-@author: Admins
+@author: CarinaG.
 """
 
 class Cliente:  #defino la clase Cliente que me permite agregar, buscar, mostrar y eliminar a clientes.
@@ -64,7 +64,7 @@ class Cliente:  #defino la clase Cliente que me permite agregar, buscar, mostrar
     
     
 
-class Banco(Cliente):  #Creo la Clase Banco para cargar agenda y operar con las cuentas. Se relaciona con la clase cliente por Composición (reutilizamos la función buscar cliente de la clase cliente)
+class Banco(Cliente):  #Creo la Clase Banco para cargar agenda y operar con las cuentas.  (reutilizamos la función buscar cliente de la clase cliente)
     
     def __init__(self,cliente):
         self.cliente=cliente  #recibo por parámetro el dict de clientes
@@ -108,25 +108,37 @@ class Banco(Cliente):  #Creo la Clase Banco para cargar agenda y operar con las 
         if fecha in self.agendaxfecha:
             dni=int(input("Ingrese el número del DNI para realizar la operación Bancaria: "))
             operacion,monto=0,0
-            #ganancia=0.8   
+            ganancia=0.8   
             for i in self.agendaxfecha.values():
                 if i==dni:
                     print("El cliente tiene agendada visita al banco hoy.")
-                    operacion=int(input("Ingrese la operación Bancaria: 1)Deposito en CA / 2)Deposito en PF por 30 días/ 3) Extracción : "))
-                    monto=float(input("Ingrese el monto correspondiente: "))  #hasta acá anda
+                    operacion=int(input("Ingrese la operación Bancaria: 1 -Deposito en CA / 2 -Deposito en PF por 30 días/ 3 -Extracción : "))
+                     
                     if operacion==1:
-                        #si se ingreso operación N1 cliente deposita en su CA
-                        #busco enlos valores del diccionario donde esta monto y le sumo el monto ingresado 
+                        if cliente[dni][2]=="CA":
+                            mon=float(input("Ingrese el monto correspondientea depositar en su Caja de Ahorro: "))
+                            cliente[dni][3]=cliente[dni][3] + mon
+                            print("El saldo actual del cliente: ",dni,cliente[dni][0], " es: ",cliente[dni][3])
+                        else:
+                            print("El cliente no posee Caja de Ahorro y no puede operar sin una.")
                         print("Hacer")
-                        #(busco la 4 posición en los valores del dic )=(al valor de 4 pos ) + monto
                 
                     elif operacion==2:  # si se elige esta operacion cliente deposita en PF a 30 días
-                        #( busco la 4 posición en los valores del dic  )=(al valor de 4 pos ) + monto +(monto * ganancia)
-                        print("Hacer")
+                        if cliente[dni][2]=="PF":
+                            mon=float(input("Ingrese el monto correspondientea depositar en Plazo Fijo por 30 días: "))
+                            cliente[dni][3]=cliente[dni][3] + mon +(mon * ganancia)
+                            print("El saldo actual del cliente: ",dni,cliente[dni][0], " es: ",cliente[dni][3])
+                        else:
+                            print("El cliente no tiene una cuenta Plazo Fijo y no puede eoprar sin una.3")
+
                     elif operacion==3:  # si se ingresa esta opción el cliente realiza una extraccion de su CA
-                        #verifico que el monto ingresado para extraer sea > que el disponible
-                        #( valor pos 4   )=(valor pos 4 ) - monto    # si es posible la extracción le resto el importe al valor de la cuenta del cliente
-                        print("Hacer")
+                        mon=float(input("Ingrese el monto que desea extraer de su cuenta: "))
+                        if cliente[dni][3] > mon:
+                            cliente[dni][3]=cliente[dni][3] - mon
+                            print("El saldo actual del cliente: ",dni,cliente[dni][0], " es: ",cliente[dni][3])
+                        else:
+                            print("El cliente no posee saldo suficiente para realizar la extracción.")
+
                     else:
                         print("Ingreso una opción no válida")              
                 else:
@@ -148,4 +160,4 @@ c.modificar_cliente()  #instancio a la clase modificar cliente
 bco=Banco(cliente)  #creo el objeto Banco que recibe por parámetro el diccionario con clientes cargados
 bco.agenda()  #inistancio al método agenda para cargar actividades en el Banco
 bco.consulta_fecha()   # consulto las fechas cargadas en la agenda
-#bco.operar()  #instancio al método operar  
+bco.operar()  #instancio al método operar  
