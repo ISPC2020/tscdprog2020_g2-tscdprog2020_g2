@@ -47,7 +47,7 @@ class Cliente:  #defino la clase Cliente que me permite agregar, buscar, mostrar
         if nro_DNI in self.cliente:
             mail=input("Ingresa el nuevo E-mail: ")
             self.cliente[nro_DNI][1]=mail
-            print("Los datos del cliente se han actualizados.")
+            print("Los datos del cliente se han actualizado.")
             print("Nro DNI: ",nro_DNI,"  Nombre:",self.cliente[nro_DNI][0],"   E-mail: ",self.cliente[nro_DNI][1])
         else:
             print("No existe cliente.")
@@ -121,7 +121,7 @@ class Banco(Cliente):  #Creo la Clase Banco para cargar agenda y operar con las 
                             print("El saldo actual del cliente: ",dni,cliente[dni][0], " es: ",cliente[dni][3])
                         else:
                             print("El cliente no posee Caja de Ahorro y no puede operar sin una.")
-                        print("Hacer")
+                        
                 
                     elif operacion==2:  # si se elige esta operacion cliente deposita en PF a 30 días
                         if cliente[dni][2]=="PF":
@@ -129,7 +129,7 @@ class Banco(Cliente):  #Creo la Clase Banco para cargar agenda y operar con las 
                             cliente[dni][3]=cliente[dni][3] + mon +(mon * ganancia)
                             print("El saldo actual del cliente: ",dni,cliente[dni][0], " es: ",cliente[dni][3])
                         else:
-                            print("El cliente no tiene una cuenta Plazo Fijo y no puede eoprar sin una.3")
+                            print("El cliente no tiene una cuenta Plazo Fijo y no puede eoprar sin una.")
 
                     elif operacion==3:  # si se ingresa esta opción el cliente realiza una extraccion de su CA
                         mon=float(input("Ingrese el monto que desea extraer de su cuenta: "))
