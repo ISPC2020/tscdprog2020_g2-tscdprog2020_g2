@@ -95,11 +95,15 @@ class Banco(Cliente):  #Creo la Clase Banco para cargar agenda y operar con las 
         
     def consulta_fecha(self):  #método para consultar los clientes agendados en una fecha ingresada
         fecha=input("Ingrese la fecha que desea consultar:")
+        #if fecha in self.agendaxfecha:
+            #for hora,d,c in self.agendaxfecha[fecha]:
+                #print(hora,d,c)
+        #else:
+            #print("No hay actividades agendadas para dicha fecha")
         if fecha in self.agendaxfecha:
-            for hora,d,c in self.agendaxfecha[fecha]:
-                print(hora,d,c)
-        else:
-            print("No hay actividades agendadas para dicha fecha")
+            for i in self.agendaxfecha:
+                print(fecha,"  Hora",self.agendaxfecha[fecha][0],"  DNI del cliente",self.agendaxfecha[fecha][1], "  Nombre del Cliente: ",self.agendaxfecha[fecha][2])
+            
             
             
     def operar(self):
@@ -151,13 +155,13 @@ class Banco(Cliente):  #Creo la Clase Banco para cargar agenda y operar con las 
 #creo un diccionario con algunos clientes cargados para poder trabajar luego en los métodos y poder controlar los cambios.
 cliente={236541:["Carlos Fuentes","carlitos@yahoo.com","CA",98000],456398:["Carla Flores","carlita@gmail.com","PF",35000],3654125:["Rosa Roja","rosita@gmail.com","CA",365000]}
 c=Cliente(cliente)  #creo el objeto Cliente y le paso por parámetro el diccionario con clientes 
-c.mostrar_clientes()  #instancio a la clase mostrar clientes
-c.buscar_cliente()   #instancio a la clase buscar clientes
+#c.mostrar_clientes()  #instancio a la clase mostrar clientes
+#c.buscar_cliente()   #instancio a la clase buscar clientes
 #c.agregar_cliente() #instancio a la clase agregar cliente
 #c.modificar_cliente()  #instancio a la clase modificar cliente
 #c.eliminar_cliente()  #instancio a la clase eliminar cliente 
 #c.mostrar_clientes()  #nuevamente voy a instanciar al método mostrar para constatar que se elimino el cliente
 bco=Banco(cliente)  #creo el objeto Banco que recibe por parámetro el diccionario con clientes cargados
 bco.agenda()  #inistancio al método agenda para cargar actividades en el Banco
-#bco.consulta_fecha()   # consulto las fechas cargadas en la agenda
+bco.consulta_fecha()   # consulto las fechas cargadas en la agenda
 bco.operar()  #instancio al método operar  
