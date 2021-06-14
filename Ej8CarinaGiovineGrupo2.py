@@ -109,8 +109,8 @@ class Banco(Cliente):  #Creo la Clase Banco para cargar agenda y operar con las 
             dni=int(input("Ingrese el número del DNI para realizar la operación Bancaria: "))
             operacion,monto=0,0
             ganancia=0.8   
-            for i in self.agendaxfecha():
-                if dni==self.agendaxfecha.values():
+            for i in self.agendaxfecha.values():
+                if dni == self.agendaxfecha[fecha][1]:
                     print("El cliente tiene agendada visita al banco hoy.")
                     operacion=int(input("Ingrese la operación Bancaria: 1 -Deposito en CA / 2 -Deposito en PF por 30 días/ 3 -Extracción : "))
                      
@@ -154,7 +154,7 @@ c=Cliente(cliente)  #creo el objeto Cliente y le paso por parámetro el dicciona
 c.mostrar_clientes()  #instancio a la clase mostrar clientes
 c.buscar_cliente()   #instancio a la clase buscar clientes
 #c.agregar_cliente() #instancio a la clase agregar cliente
-c.modificar_cliente()  #instancio a la clase modificar cliente
+#c.modificar_cliente()  #instancio a la clase modificar cliente
 #c.eliminar_cliente()  #instancio a la clase eliminar cliente 
 #c.mostrar_clientes()  #nuevamente voy a instanciar al método mostrar para constatar que se elimino el cliente
 bco=Banco(cliente)  #creo el objeto Banco que recibe por parámetro el diccionario con clientes cargados
