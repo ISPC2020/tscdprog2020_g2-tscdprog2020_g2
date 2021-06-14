@@ -166,14 +166,15 @@ def buscar_emp():
 
 def modificar_emp(): #hacer
     print("Modificar mail de un Cliente")
-    nro_DNI=int(input("Ingresa el nro de DNI del cliente para actualizar sus datos: "))
-    if nro_DNI in cliente:
-        mail=input("Ingresa el nuevo E-mail: ")
-        cliente[2]=mail
-        print("Los datos del cliente se han actualizados.")
-        print("Nro DNI: ",cliente[0],"  Nombre:",cliente[1],"   E-mail: ",cliente[2])
+    nro=int(input("Ingresa el nro de empleado para actualizar sus datos: "))
+    if nro_emp in empleados:
+        nom=input("Ingrese el nombre del empleado: ")
+        ape=input("Ingrese el apellido: ")
+        gen=input("Ingrese el genero: ")
+        print("Los datos del empleado se han actualizados.")
+        print("Nro Emp: ",empleados[0],"  Nombre:",empleados[1],"   Apellido: ",cliente[2])
     else:
-        print("No existe cliente.")
+        print("No existe empleado con ese número.")
 
              
            

@@ -19,7 +19,7 @@ class Cliente:  #defino la clase Cliente que me permite agregar, buscar, mostrar
             mail=input("Ingresa el correo electrónico: ")
             tipo_cta=input("Ingresa CA para cuenta Caja de Ahorro o PF para cuenta Plazo Fijo: ")
             monto=float(input("Ingresa el monto inicial: "))
-            self.cliente[nro_DNI]=(nombre.capitalize(),mail,tipo_cta.upper(),monto)
+            self.cliente[nro_DNI]=[nombre.capitalize(),mail,tipo_cta.upper(),monto]
         else:
             print("El cliente ya existe.")
      
@@ -109,8 +109,8 @@ class Banco(Cliente):  #Creo la Clase Banco para cargar agenda y operar con las 
             dni=int(input("Ingrese el número del DNI para realizar la operación Bancaria: "))
             operacion,monto=0,0
             ganancia=0.8   
-            for i in self.agendaxfecha.values():
-                if i==dni:
+            for i in self.agendaxfecha():
+                if dni==self.agendaxfecha.values():
                     print("El cliente tiene agendada visita al banco hoy.")
                     operacion=int(input("Ingrese la operación Bancaria: 1 -Deposito en CA / 2 -Deposito en PF por 30 días/ 3 -Extracción : "))
                      
@@ -153,11 +153,11 @@ cliente={236541:["Carlos Fuentes","carlitos@yahoo.com","CA",98000],456398:["Carl
 c=Cliente(cliente)  #creo el objeto Cliente y le paso por parámetro el diccionario con clientes 
 c.mostrar_clientes()  #instancio a la clase mostrar clientes
 c.buscar_cliente()   #instancio a la clase buscar clientes
-c.agregar_cliente() #instancio a la clase agregar cliente
+#c.agregar_cliente() #instancio a la clase agregar cliente
 c.modificar_cliente()  #instancio a la clase modificar cliente
 #c.eliminar_cliente()  #instancio a la clase eliminar cliente 
 #c.mostrar_clientes()  #nuevamente voy a instanciar al método mostrar para constatar que se elimino el cliente
 bco=Banco(cliente)  #creo el objeto Banco que recibe por parámetro el diccionario con clientes cargados
 bco.agenda()  #inistancio al método agenda para cargar actividades en el Banco
-bco.consulta_fecha()   # consulto las fechas cargadas en la agenda
+#bco.consulta_fecha()   # consulto las fechas cargadas en la agenda
 bco.operar()  #instancio al método operar  
