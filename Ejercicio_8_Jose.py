@@ -1,5 +1,6 @@
 # Libraries
 import pymysql
+import pandas as pd
 
 
 # Classes
@@ -194,6 +195,13 @@ class employee:
                 with self.connection.cursor() as cursor:
                     query = 'SELECT emp_no, salary, from_date FROM salaries WHERE emp_no =' + str(ID_number)
                     cursor.execute(query)
+
+                    # dataFrame
+                    employees = cursor.fetchall()
+                    employees_df = pd.DataFrame(employees)
+                    employees_df.columns = ['Emp_N°', 'Salary', 'Dates']
+                    print(employees_df)
+
                     self.connection.commit()
             finally:
                 self.connection.close()
