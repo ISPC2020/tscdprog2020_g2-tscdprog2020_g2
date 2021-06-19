@@ -1,6 +1,7 @@
 # Libraries
 import pymysql
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 # Classes
@@ -200,11 +201,14 @@ class employee:
                     employees = cursor.fetchall()
                     employees_df = pd.DataFrame(employees)
                     employees_df.columns = ['Emp_N°', 'Salary', 'Dates']
-                    print(employees_df)
 
                     self.connection.commit()
             finally:
                 self.connection.close()
+
+                print(employees_df)
+
+                return employees_df
         else:
             print("Try again")
 
@@ -230,7 +234,9 @@ class bank:
 
             3) Employees
             
-            4) Close""")
+            4) Analytics
+            
+            5) Close""")
 
             option = int(input("\nEnter the option: "))
 
@@ -302,8 +308,20 @@ class bank:
                         elif employee_option == 4:
                             break
 
-            # End of execution
             elif option == 4:
+                print("Bucle de analiticas")
+
+                subject = employee()
+                data_subject = subject.showEmployee()
+
+                # plot
+                plt.scatter(data_subject['Dates'], data_subject['Salary'])
+                plt.xlabel('Years', size=10)
+                plt.ylabel('Salary', size=10)
+                plt.show()
+
+            # End of execution
+            elif option == 5:
                 break
 
 
