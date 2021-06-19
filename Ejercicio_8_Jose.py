@@ -2,6 +2,7 @@
 import pymysql
 import pandas as pd
 import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
 
 
 # Classes
@@ -319,6 +320,12 @@ class bank:
                 plt.xlabel('Years', size=10)
                 plt.ylabel('Salary', size=10)
                 plt.show()
+
+                # Linear Regression
+                regresion_lineal = LinearRegression()
+                # Fit
+                regresion_lineal.fit(data_subject['Dates'], data_subject['Salary'])
+                # Predict
 
             # End of execution
             elif option == 5:
