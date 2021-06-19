@@ -175,8 +175,8 @@ class employee:
         if self.connectionTest():
             try:
                 with self.connection.cursor() as cursor:
-                    query = "DELETE FROM employees WHERE (emp_no=) VALUES (%s)"
-                    cursor.execute(query, ID_number)
+                    query = 'delete from employees where emp_no =' + str(ID_number)
+                    cursor.execute(query)
                     self.connection.commit()
             finally:
                 self.connection.close()
@@ -192,8 +192,8 @@ class employee:
         if self.connectionTest():
             try:
                 with self.connection.cursor() as cursor:
-                    query = "SELECT emp_no, salary, from_date FROM salaries WHERE emp_no VALUES (%s)"
-                    cursor.execute(query, ID_number)
+                    query = 'SELECT emp_no, salary, from_date FROM salaries WHERE emp_no =' + str(ID_number)
+                    cursor.execute(query)
                     self.connection.commit()
             finally:
                 self.connection.close()
