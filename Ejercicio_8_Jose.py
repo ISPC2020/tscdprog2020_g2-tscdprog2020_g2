@@ -1,4 +1,5 @@
 # Libraries
+import numpy as np
 import pymysql
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -209,7 +210,7 @@ class employee:
 
                 print(employees_df)
 
-                return employees_df
+                return employees    # employees_df
         else:
             print("Try again")
 
@@ -314,18 +315,41 @@ class bank:
 
                 subject = employee()
                 data_subject = subject.showEmployee()
+                new_data = []
+                dates = []
+                salaries = []
+
+                # extract data
+                for i in data_subject:
+                    a = str(i[2])
+                    a = a[:4]
+                    dates.append(int(a))
+                    salaries.append(i[1])
+                    new_data.append([i[0], i[1], int(a)])
+
+                # numpy array
+                salaries = np.array(salaries)
+                dates = np.array(dates)
+
+                # dataFrame
+                """employee_df = pd.DataFrame(new_data)
+                employee_df.columns = ['Emp_N°', 'Salary', 'Dates']
+                print(employee_df)"""
+
+                # linear regression
+                regression = LinearRegression(fit_intercept=True)
+                # fit
+                regression.fit(dates[:, np.newaxis], salaries)
+                # predict
+                new_dates = np.linspace(dates[0], dates[-1], 50)
+                new_salaries = regression.predict(new_dates[:, np.newaxis])
 
                 # plot
-                plt.scatter(data_subject['Dates'], data_subject['Salary'])
+                plt.scatter(dates, salaries)
+                plt.plot(new_dates, new_salaries, color='red')
                 plt.xlabel('Years', size=10)
                 plt.ylabel('Salary', size=10)
                 plt.show()
-
-                # Linear Regression
-                regresion_lineal = LinearRegression()
-                # Fit
-                regresion_lineal.fit(data_subject['Dates'], data_subject['Salary'])
-                # Predict
 
             # End of execution
             elif option == 5:
