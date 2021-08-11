@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de contagiados</title>
+</head>
+<body>
+    <h1>Sistema de Administracion de Contagiados</h1>
+    <div>
+        Total de contagiados: {{total_contagiados}}
+    </div>
+    <div>
+        <a href="{{url_for('agregar')}}">Agregar nuevo contagiado</a>
+    </div>
+    <div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>DNI</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Edad</th>
+                    <th>Asistencia</th>
+                    <th>Telefono</th>
+                    <th>Barrio</th>
+                    <th>Fecha del positivo</th>
+                    <th>Tipo de la variante</th>
+                    <th>Fecha del alta</th>
+                    <th>Fecha de deceso</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contagiado in contagiados %}
+                <tr>
+                    <td>{{contagiado.DNI}}</td>
+                    <td>{{contagiado.Nombre}}</td>
+                    <td>{{contagiado.Apellido}}</td>
+                    <td>{{contagiado.Edad}}</td>
+                    <td>{{contagiado.Asistencia}}</td>
+                    <td>{{contagiado.Telefono}}</td>
+                    <td>{{contagiado.Barrio}}</td>
+                    <td>{{contagiado.Fecha_positivo}}</td>
+                    <td>{{contagiado.Variante}}</td>
+                    <td>{{contagiado.Fecha_alta}}</td>
+                    <td>{{contagiado.Fecha_muerte}}</td>
+                    <td><a href="ver/{{contagiado.DNI}}">Ver detalle</a> </td>
+                    <td><a href="editar/{{contagiado.DNI}}">Editar</a> </td>
+                    <td><a href="eliminar/{{contagiado.DNI}}">Eliminar</a> </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
