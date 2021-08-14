@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Persona</title>
+</head>
+<body>
+    <h1>Editar Persona</h1>
+    <form method="post">
+        {{formulario.csrf_token}}
+        <p>
+            {{formulario.DNI.label}} <br/>
+            {{formulario.DNI(sinze=8)}}
+        </p>
+        <p>
+            {{formulario.Nombre.label}} <br/>
+            {{formulario.Nombre}}
+        </p>
+        <p>
+            {{formulario.Apellido.label}} <br/>
+            {{formulario.Apellido}}
+        </p>
+        <p>
+            {{formulario.Edad.label}} <br/>
+            {{formulario.Edad}}
+        </p>
+        <p>
+            {{formulario.Sexo.label}} <br/>
+            {{formulario.Sexo}}
+        </p>
+        <p>
+            {{formulario.Obra_social.label}} <br/>
+            {{formulario.Obra_social}}
+        </p>
+        <p>
+            {{formulario.Asistencia.label}} <br/>
+            {{formulario.Asistencia}}
+        </p>
+        <p>
+            {{formulario.Telefono.label}} <br/>
+            {{formulario.Telefono}}
+        </p>
+        <p>
+            {{formulario.Email.label}} <br/>
+            {{formulario.Email}}
+        </p>
+        <p>
+            {{formulario.Domicilio.label}} <br/>
+            {{formulario.Domicilio}}
+        </p>
+        <p>
+            {{formulario.Barrio.label}} <br/>
+            {{formulario.Barrio}}
+        </p>
+        <p>
+            {{formulario.Fecha_positivo.label}} <br/>
+            {{formulario.Fecha_positivo}}
+        </p>
+        <p>
+            {{formulario.Variante.label}} <br/>
+            {{formulario.Variante}}
+        </p>
+        <p>
+            {{formulario.Fecha_primerosSintomas.label}} <br/>
+            {{formulario.Fecha_primerosSintomas}}
+        </p>
+        <p>
+            {{formulario.Sintomas.label}} <br/>
+            {{formulario.Sintomas}}
+        </p>
+        <p>
+            {{formulario.Comorbilidad.label}} <br/>
+            {{formulario.Comorbilidad}}
+        </p>
+        <p>
+            {{formulario.Fecha_alta.label}} <br/>
+            {{formulario.Fecha_alta}}
+        </p>
+        <p>
+            {{formulario.Fecha_muerte.label}} <br/>
+            {{formulario.Fecha_muerte}}
+        </p>
+        <p>
+            {{formulario.enviar()}}
+        </p>
+    </form>
+<a href="{{url_for('index')}}">Regresar</a>
+</body>
+</html>
