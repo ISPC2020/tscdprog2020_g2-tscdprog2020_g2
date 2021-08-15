@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ver Persona</title>
+</head>
+<body>
+    <h1>Detalles</h1>
+    <h3>Datos Personales</h3>
+    <div>DNI: {{persona.DNI}}</div>
+    <div>Nombre: {{persona.Nombre}}</div>
+    <div>Apellido: {{persona.Apellido}}</div>
+    <div>Edad: {{persona.Edad}}</div>
+    <div>Genero: {{persona.Sexo}}</div>
+    <div>Obra social: {{persona.Obra_social}}</div>
+    <div>Asistencia: {{persona.Asistencia}}</div>
+    <h3>Datos de Contacto</h3>
+    <div>Telefono: {{persona.Telefono}}</div>
+    <div>Email: {{persona.Email}}</div>
+    <div>Domicilio: {{persona.Domicilio}}</div>
+    <div>Barrio: {{persona.Barrio}}</div>
+    <h3>Datos Epidemeologicos</h3>
+    <div>Fecha del positivo: {{persona.Fecha_positivo}}</div>
+    <div>Variante: {{persona.Variante}}</div>
+    <div>Fecha de los primeros sintomas: {{persona.Fecha_primerosSintomas}}</div>
+    <div>Sintomas presentados: {{persona.Sintomas}}</div>
+    <div>Comorbilidades: {{persona.Comorbilidad}}</div>
+    <div>Fecha del alta: {{persona.Fecha_alta}}</div>
+    <div>Fecha del deceso: {{persona.Fecha_muerte}}</div>
+<br/>
+<a href="{{url_for('index')}}">Regresar</a>
+</body>
+</html>
